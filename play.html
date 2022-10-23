@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini YouTube</title>
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://www.logo.wine/a/logo/YouTube/YouTube-Icon-Full-Color-Logo.wine.svg">
+
+    <style>
+        #top {
+            width: 15%;
+            margin: auto;
+            display: flex;
+            cursor: pointer;
+        }
+
+        #name {
+            width: 28%;
+        }
+
+        #name>p {
+            font-size: 25px;
+            font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        #logo {
+            width: 72%;
+            height: auto;
+            margin: auto;
+        }
+
+        #logo>img {
+            width: 100%;
+        }
+
+        #videos {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body onload="play_video()">
+
+    <div id="top">
+        <div id="name">
+            <p>Mini</p>
+        </div>
+        <div id="logo">
+            <img src="https://static.vecteezy.com/system/resources/previews/003/206/623/original/youtube-editorial-app-icon-free-vector.jpg"
+                alt="Error">
+        </div>
+    </div>
+
+    <div id="videos">
+        <iframe width="560" height="315" id="play" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    let play_video = () => {
+        let videoData = JSON.parse(localStorage.getItem("video"));
+        // console.log(videoData);
+        let id = videoData.id.videoId;
+
+        let play_video = document.getElementById("play");
+
+        play_video.src = `https://www.youtube.com/embed/${id}`;
+    }
+
+    document.querySelector("#top").addEventListener("click", myHome);
+
+    function myHome() {
+        window.location.href = "index.html";
+    }
+</script>
